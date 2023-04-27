@@ -1,0 +1,74 @@
+
+
+PRODUCTS
+
+
+
+
+
+BRANDS
+
+
+
+
+
+banco de dados
+
+
+M PRODUCTS TO 1 BRAND
+
+1 BRAND TO M PRODUCTS
+
+
+----------------------------
+tabela
+----------------------------
+
+PRODUCTS
+    id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    price REAL NOT NULL
+    description TEXT NOT NULL
+    brand_id TEXT FOREIGN KEY -> BRAND.id
+
+BRANDS
+    id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    name TEXT UNIQUE NOT NULL
+
+
+---------------------------
+camadas
+---------------------------
+
+mais externa ---- index.ts --> routers --> controller --> business --> database --> sql ---- mais interna
+
+
+----------------------------
+regras de negócio
+----------------------------
+
+getAllBrands
+
+resposta:
+
+{
+    id
+    name
+}
+
+
+getAllProducts
+
+resposta:
+
+product model
+{
+    id
+    name
+    price
+    description
+    brand: {
+        id
+        name
+    }
+}
